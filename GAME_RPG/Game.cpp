@@ -30,6 +30,11 @@ void Game::updateSFMLEvents()
 	}
 }
 
+void Game::updateDt()
+{
+	this->dt = this->dtClock.restart().asSeconds();
+}
+
 void Game::update()
 {
 	this->updateSFMLEvents();
@@ -46,6 +51,7 @@ void Game::render()
 void Game::run()
 {
 	while (this->window->isOpen()) {
+		this->updateDt();
 		this->update();
 		this->render();
 

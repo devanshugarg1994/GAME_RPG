@@ -16,6 +16,10 @@ private:
 	// Variables
 	sf::RenderWindow* window;
 	sf::Event sfEvent;
+	// How much each render and update call take 
+	sf::Clock dtClock;
+	float dt;
+
 	// Initialization
 	void initWindow();
 
@@ -26,6 +30,7 @@ public:
 
 	// Functions
 	void updateSFMLEvents();
+	void updateDt();
 	void update();
 	void render();
 	void run();
