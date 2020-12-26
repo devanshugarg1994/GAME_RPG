@@ -11,4 +11,10 @@ like update , render and draw call.  <br/><br/>
 [Window config using a file](../../tree/4a0be8d80e745c689247367d74123dd50ec48900)<br/>
 We are Reading file `Config/window.init` to get window basic parameters like title, width,
 height which are set on window object when initialized.
+[State and GameState](../../tree/2af6e06ac5245df241b0aca5ac0d4a1627f54839)<br/>
+ State is a abstact class which is inherit by other various component.
+ State is used to break our game into smaller and relatable components which make code 
+ loosely coupled and reusable.<br/>
+ Right know we have only Game state class which used this `state class as abstact`,
+ in future we will add more.<br/><br/>
 
