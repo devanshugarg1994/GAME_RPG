@@ -2,9 +2,30 @@
 // Static functions
 
 // INIT functions
+
+// creating game window using Config/window.init file.
 void Game::initWindow()
 {
-	this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "SFML works!");
+	// Default setting
+
+	std::string title = "NONE";
+	sf::VideoMode window_bounds(720, 720);
+	unsigned int frameRate = 120;
+	bool vertical_syn_enabled = false;
+
+	std::ifstream ifs("Config/window.init");
+
+	if (ifs.is_open()) {
+		std::getline(ifs, title);
+		ifs >> window_bounds.width;
+		ifs >> window_bounds.height;
+		ifs >> frameRate;
+		ifs >> vertical_syn_enabled;
+	}
+	ifs.close();
+	this->window = new sf::RenderWindow(window_bounds, title);
+	this->window->setFramerateLimit(frameRate);
+	this->window->setVerticalSyncEnabled(vertical_syn_enabled);
 }
 
 // Constructor 
