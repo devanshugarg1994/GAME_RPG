@@ -21,14 +21,24 @@ private:
 
 
 public:
+	//Constructors/Destructors
 	Game();
 	virtual ~Game();
 
-	// Functions
+	/** ---------- Functions ---------------- **/
+	
+	//Regular
+	void endApplication();
+
+	//Update
 	void updateSFMLEvents();
 	void updateDt();
 	void update();
+
+	//Render
 	void render();
+
+	//Core
 	void run();
 };
 

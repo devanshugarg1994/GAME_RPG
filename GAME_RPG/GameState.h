@@ -1,6 +1,6 @@
 #pragma once
 #include "State.h"
-class GameState :
+class GameState : 
     public State
 {
 private:
@@ -8,8 +8,8 @@ private:
 public:
     GameState(sf::RenderWindow * window);
     virtual ~GameState();
-
     void endState();
+    void updateKeyBinds(const float& dt);
     void update(const float& dt);
     void render(sf::RenderTarget* target = nullptr);
 };

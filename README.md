@@ -15,6 +15,6 @@ height which are set on window object when initialized. <br/><br/>
  State is a abstact class which is inherit by other various component.
  State is used to break our game into smaller and relatable components which make code 
  loosely coupled and reusable.<br/>
- Right know we have only Game state class which used this `state class as abstact`,
+ Right know we have only Game state class which use `state class as abstact`,
  in future we will add more.<br/><br/>
 

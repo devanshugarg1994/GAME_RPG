@@ -30,7 +30,7 @@ void Game::initWindow()
 
 void Game::initStates()
 {
-	//this->states.push(new GameState(this->window));
+	this->states.push(new GameState(this->window));
 
 }
 
@@ -53,6 +53,11 @@ Game::~Game()
 
 }
 
+void Game::endApplication()
+{
+	std::cout << "End Application!" << std::endl;
+}
+
 // Functions
 void Game::updateSFMLEvents()
 {
@@ -73,8 +78,21 @@ void Game::update()
 {
 	this->updateSFMLEvents();
 
-	if (!this->states.empty())
+	if (!this->states.empty()) {
 		this->states.top()->update(this->dt);
+
+		if (this->states.top()->getQuit()) {
+			this->states.top()->endState();
+			delete this->states.top();
+			this->states.pop();
+		}
+	} 
+	// If no state is there in `states` Queue then window is closed.
+	else {
+		this->endApplication();
+		this->window->close();
+	}
+	
 
 }
 
