@@ -28,9 +28,34 @@ void Game::initWindow()
 	this->window->setVerticalSyncEnabled(vertical_syn_enabled);
 }
 
+void Game::initKeys()
+{
+	std::ifstream ifs("Config/supported_keys.init");
+
+	if (ifs.is_open()) {
+
+		std::string key = "";
+		int key_value = 0;
+
+		while (ifs >> key >> key_value) {
+			this->supportedKeys[key] = key_value;
+		}
+		//Closing file
+		ifs.close();
+	}
+	else {
+		std::cout << "Error! In opening file `supported_keys.init` at the path: `Config/supported_keys.init` " << std::endl;
+	}
+
+	// Debugging purpose
+	for (auto i : this->supportedKeys) {
+		std::cout << i.first << " " << i.second << std::endl;
+	}
+}
+
 void Game::initStates()
 {
-	this->states.push(new GameState(this->window));
+	this->states.push(new GameState(this->window, &(this->supportedKeys)));
 
 }
 
@@ -38,6 +63,7 @@ void Game::initStates()
 Game::Game()
 {
 	this->initWindow();
+	this->initKeys();
 	this->initStates();
 }
 
