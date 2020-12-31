@@ -7,6 +7,8 @@ private:
     Entity player;
 
 protected:
+    void initKeyBinds();
+
 public:
     GameState(sf::RenderWindow * window, std::map<std::string, int>* supportedKeys);
     virtual ~GameState();
@@ -14,7 +16,6 @@ public:
     void updateInput(const float& dt);
     void update(const float& dt);
     void render(sf::RenderTarget* target = nullptr);
-    void initKeyBinds();
 
 };
 

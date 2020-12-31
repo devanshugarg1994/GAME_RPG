@@ -44,8 +44,6 @@ void GameState::endState()
 	std::cout << "End State" << std::endl;
 }
 
-
-
 void GameState::updateInput(const float& dt)
 {
 	this->checkForQuit();
@@ -63,10 +61,9 @@ void GameState::updateInput(const float& dt)
 
 void GameState::update(const float& dt)
 {
+	this->updateMousePositions();
 	this->updateInput(dt);
 	this->player.update(dt);
-
-		
 }
 
 void GameState::render(sf::RenderTarget* target)

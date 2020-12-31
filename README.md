@@ -21,6 +21,6 @@ height which are set on window object when initialized. <br/><br/>
 [Supported Keys and Binding Keys](../../tree/98f5c5c15fc350e12e8da21325c066ea717e48af)<br/>
 We have add map in Game class which include supported keys in the map from `Config/supported_keys.init`.<br/>
 We pass this map as a pointer to state class which are pushed in `States` stack. 
-Using this we map key which are supported with appropriate <b>Event string</b> from there keybinding file at `Config\.`
+Using this we <i>bind</i> key which are supported with appropriate <b>Event string</b> from there keybinding file at `Config\.`
 <br/><br/>
 
