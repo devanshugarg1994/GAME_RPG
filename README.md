@@ -24,3 +24,9 @@ We pass this map as a pointer to state class which are pushed in `States` stack.
 Using this we <i>bind</i> key which are supported with appropriate <b>Event string</b> from there keybinding file at `Config\.`
 <br/><br/>
 
+[Button Class](../../tree/61a2632b6951f0f3f48963eaa9d47453899bf35d)<br/>
+Added a buttton class with basic feature<br/>
+Button class contain diffrent state and it change when we clicked or hover it.<br/>
+Button contain a text parameter which is used to set a text on the button. Text is centrally aligned wr.t button.  
+<br/><br/>
+
