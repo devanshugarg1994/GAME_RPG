@@ -15,6 +15,7 @@ class State
 private: 
 	
 protected:
+	std::stack<State*>* states;
 	std::map<std::string, int>* supportedKeys;
 	std::map<std::string, int> keyBinds;
 	sf::RenderWindow* window;
@@ -28,7 +29,7 @@ protected:
 
 	virtual void initKeyBinds() = 0;
 public:
-	State(sf::RenderWindow * window, std::map<std::string, int>* supportedKeys);
+	State(sf::RenderWindow * window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
 	virtual ~State(); 
 
 	// Accessrors

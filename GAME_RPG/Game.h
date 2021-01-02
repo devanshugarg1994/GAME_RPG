@@ -1,6 +1,5 @@
 #pragma once
 
-#include"GameState.h"
 #include "MainMenuState.h"
 
 class Game
@@ -10,6 +9,9 @@ private:
 	// Variables
 	sf::RenderWindow* window;
 	sf::Event sfEvent;
+	std::vector<sf::VideoMode> videoModes;
+	sf::ContextSettings windowSettings;
+	bool fullScreen;
 	// How much each render and update call take 
 	sf::Clock dtClock;
 	float dt;

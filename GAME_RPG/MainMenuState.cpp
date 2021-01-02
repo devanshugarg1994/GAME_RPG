@@ -9,7 +9,7 @@ void MainMenuState::initfonts()
 
 void MainMenuState::initButtons()
 {
-	this->buttons["gameStart"] = new Button(100, 100, 150, 50, &this->font, "Game Start", sf::Color(70, 70, 70, 200),
+	this->buttons["GAME_STATE"] = new Button(100, 100, 150, 50, &this->font, "Game Start", sf::Color(70, 70, 70, 200),
 		sf::Color(150, 150, 150, 255), sf::Color(20, 20, 20, 100));
 
 	this->buttons["EXIT_BUTTON"] = new Button(100, 300, 150, 50,
@@ -45,8 +45,8 @@ void MainMenuState::initKeyBinds()
 
 }
 
-MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys)
-	: State(window, supportedKeys)
+MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
+	: State(window, supportedKeys, states)
 {
 	this->initfonts();
 	this->initKeyBinds();
@@ -79,12 +79,15 @@ void MainMenuState::updateInput(const float& dt)
 
 }
 
+// button in the mainMenuState  handle on ecery updaion cycle
 void MainMenuState::updateButtons()
 {
 	for (auto& button : this->buttons) {
 		button.second->update(this->mousePosView);
 	}
-
+	if (this->buttons["GAME_STATE"]->isPressed()) {
+		this->states->push(new GameState(this->window, this->supportedKeys, this->states));
+	}
 	if (this->buttons["EXIT_BUTTON"]->isPressed()) {
 		this->quit = true;
 	}

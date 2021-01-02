@@ -1,6 +1,8 @@
 #pragma once
 #include "State.h"
 #include "Button.h"
+#include"GameState.h"
+
 class MainMenuState :
     public State
 {
@@ -14,7 +16,7 @@ protected:
     void initKeyBinds();
 
 public:
-    MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys);
+    MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
     virtual ~MainMenuState();
     void endState();
     void updateInput(const float& dt);
