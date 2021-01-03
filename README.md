@@ -29,4 +29,9 @@ Added a buttton class with basic feature<br/>
 Button class contain diffrent state and it change when we clicked or hover it.<br/>
 Button contain a text parameter which is used to set a text on the button. Text is centrally aligned wr.t button.  
 <br/><br/>
+[State end functionality Refactor](../../tree/860d5c120d8759df8fd86a301243c2202020e851)<br/>\
+Now we have `endState` decalre and define at Absract State class.<br/>
+It's not decalred virtual and should not overrided. Game loop check at every iteration for the quit value of the state at the top of stack,
+which can change in inhertited class  accordingly using `endSate` of Base class `State`.
+<br/><br/>
 
