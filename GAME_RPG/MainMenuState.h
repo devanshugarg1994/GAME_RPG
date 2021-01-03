@@ -8,8 +8,11 @@ class MainMenuState :
 {
 private:
     sf::RectangleShape background;
+    sf::Texture backgroundTexture;
     sf::Font font;
     std::map<std::string, Button*> buttons;
+    void initVariables();
+    void initBackgrounds();
     void initfonts();
     void initButtons();
 protected:
@@ -18,7 +21,6 @@ protected:
 public:
     MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
     virtual ~MainMenuState();
-    void endState();
     void updateInput(const float& dt);
     void updateButtons();
     void update(const float& dt);

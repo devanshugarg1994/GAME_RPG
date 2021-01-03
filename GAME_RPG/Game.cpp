@@ -3,6 +3,14 @@
 
 // INIT functions
 
+void Game::initVariables()
+{
+	this->window = NULL;
+	this->dt = 0.f;
+	this->fullScreen = false;
+
+}
+
 // creating game window using Config/window.init file.
 void Game::initWindow()
 {
