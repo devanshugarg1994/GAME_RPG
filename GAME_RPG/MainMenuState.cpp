@@ -98,7 +98,7 @@ void MainMenuState::updateInput(const float& dt)
 
 }
 
-// button in the mainMenuState  handle on ecery updaion cycle
+// button in the mainMenuState  handle on every updation cycle
 void MainMenuState::updateButtons()
 {
 	for (auto& button : this->buttons) {

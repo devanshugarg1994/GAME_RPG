@@ -29,14 +29,29 @@ void GameState::initKeyBinds()
 
 }
 
+void GameState::initTextures()
+{
+	sf::Texture temp;
+	temp.loadFromFile("Resources/Images/Sprites/Player/Mario.png");
+	this->textures["PLAYER_IDLE"] = temp;
+}
+
+void GameState::initPlayers()
+{
+	this->player = new Player(0, 0, &this->textures["PLAYER_IDLE"]);
+}
+
 GameState::GameState(sf::RenderWindow * window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
 	: State(window, supportedKeys, states)
 {
 	this->initKeyBinds();
+	this->initTextures();
+	this->initPlayers();
 }
 
 GameState::~GameState()
 {
+	delete this->player;
 }
 
 
@@ -48,13 +63,13 @@ void GameState::updateInput(const float& dt)
 
 	//Update Player movement (TODO :Things related to player should be in player class)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_LEFT"))))
-		this->player.move(dt, -1.f, 0.f);
+		this->player->move(dt, -1.f, 0.f);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_RIGHT"))))
-		this->player.move(dt, 1.f, 0.f);
+		this->player->move(dt, 1.f, 0.f);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_DOWN"))))
-		this->player.move(dt, 0.f, -1.f);
+		this->player->move(dt, 0.f, -1.f);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_UP"))))
-		this->player.move(dt, 0.f, 1.f);
+		this->player->move(dt, 0.f, 1.f);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("Close"))))
 		this->endState();
 }
@@ -63,16 +78,14 @@ void GameState::update(const float& dt)
 {
 	this->updateMousePositions();
 	this->updateInput(dt);
-	this->player.update(dt);
+	this->player->update(dt);
 }
 
 void GameState::render(sf::RenderTarget* target)
 {
 	if (!target) {
-		//std::cout << "Warning! Targetted context is not passed" << std::endl;
-		//std::cout<< "Using window context passed at State Abstarct class" <<std::endl;
 		target = this->window;
 	}
 
-	this->player.render(target);
+	this->player->render(target);
 }

@@ -8,7 +8,6 @@ void Game::initVariables()
 	this->window = NULL;
 	this->dt = 0.f;
 	this->fullScreen = false;
-
 }
 
 // creating game window using Config/window.init file.
@@ -42,7 +41,6 @@ void Game::initWindow()
 	}
 	else {
 		this->window = new sf::RenderWindow(window_bounds, title,  sf::Style::Titlebar | sf::Style::Close, this->windowSettings);
-
 	}
 	this->window->setFramerateLimit(frameRate);
 	this->window->setVerticalSyncEnabled(vertical_syn_enabled);
@@ -76,7 +74,6 @@ void Game::initKeys()
 void Game::initStates()
 {
 	this->states.push(new MainMenuState(this->window, &(this->supportedKeys), &this->states));
-
 }
 
 // Constructor 
