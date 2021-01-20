@@ -39,4 +39,10 @@ which can change in inhertited class  accordingly using `endSate` of Base class 
 Start working on differnt Component. We have created basic `Player` class which extends `Entity`.
 <br/>
 <br/>
+[MovementComponent](../../tree/dc3042a029180d27b756c070008ab53e555ce47d)<br/>
+Movement Component is like tarit which is added when required by the Entity.<br/>
+Right now it is tightly coupled with sprite which is usd with entity and use `move` function of <b>SFML::Sprite</b> to move</br>
+We calculate teh direct on the basis of ky pressed and decide velocity on the basis of maxvelocity permitted and use dragFactor as well to have a check on velocity.
+<br/>
+<br/>
 
