@@ -35,7 +35,7 @@ It's not declared virtual and should not overrided. Game loop check at every ite
 which can change in inhertited class  accordingly using `endSate` of Base class `State`.
 <br/><br/>
 
-[Basic Player Entity](../../tree/a28c5fe8d056412394cb2b026451edbc3db95e49)<br/>\
+[Basic Player Entity](../../tree/a28c5fe8d056412394cb2b026451edbc3db95e49)<br/>
 Start working on differnt Component. We have created basic `Player` class which extends `Entity`.
 <br/>
 <br/>
