@@ -46,3 +46,9 @@ We calculate the direction the basis of key pressed and decide velocity on the b
 <br/>
 <br/>
 
+[Button Class Update](../../tree/1fdc24edd74a3d03b2aaa2242ec45774d2aa1fc5)<br/>
+Button class updated with text Color change on the basis of Button state and size of text is also now userdefine.<br/>
+Still Button shape will act as hit area for the button.<br/>
+```diff Bug: Text is not getting centrally align with the buttton for buig text size especially vertically.<br/>
+<br/>
+
