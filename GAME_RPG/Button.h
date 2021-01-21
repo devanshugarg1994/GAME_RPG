@@ -23,13 +23,20 @@ private:
 	sf::Font* font;
 	sf::Text text;
 
+	sf::Color textIdleColor;
+	sf::Color textHoverColor;
+	sf::Color textPressedColor;
+
+
 	sf::Color idleColor;
 	sf::Color hoverColor;
 	sf::Color pressedColor;
 
 public:
-	Button(float x, float y, float width, float height, sf::Font *font, std::string text,
-		sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor);
+	Button(float x, float y, float width, float height,
+		sf::Font* font, std::string text, unsigned int character_size,
+		sf::Color text_idle_color, sf::Color text_hover_color, sf::Color text_pressed_color,
+		sf::Color idleColor, sf::Color hoverColor, sf::Color pressedColor);
 	~Button();
 	const bool isPressed() const;
 	void update(sf::Vector2f mousePos);
