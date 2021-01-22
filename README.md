@@ -53,4 +53,8 @@ Still Button shape will act as hit area for the button.
 -Bug: Text is not getting centrally align with the buttton for big text size especially vertically.
 ```
 
+[AnimationComponent](../../tree/85dc3e3c9c36086f2c7408ec34467a08a6bc4914)<br/>
+We have created a animationComponent which is used to add multiple animation associated with entity.<br/>
+We can add multiple animation associate  with entity which can be played according to the entity state and it's interaction with the world.<br/><br/> 
+
 

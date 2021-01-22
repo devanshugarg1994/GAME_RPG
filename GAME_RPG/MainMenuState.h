@@ -2,6 +2,7 @@
 #include "State.h"
 #include "Button.h"
 #include"GameState.h"
+#include "EditorState.h"
 
 class MainMenuState :
     public State

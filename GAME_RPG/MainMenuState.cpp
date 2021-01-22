@@ -64,10 +64,10 @@ void MainMenuState::initKeyBinds()
 		std::cout << "at the path: `Config/gameStates_keyBinds.init` " << std::endl;
 	}
 
-		// Debugging purpose
-	for (auto i : this->keyBinds) {
-		std::cout << i.first << " " << i.second << std::endl;
-	}
+	//	// Debugging purpose
+	//for (auto i : this->keyBinds) {
+	//	std::cout << i.first << " " << i.second << std::endl;
+	//}
 
 }
 
@@ -110,6 +110,9 @@ void MainMenuState::updateButtons()
 	}
 	if (this->buttons["GAME_STATE"]->isPressed()) {
 		this->states->push(new GameState(this->window, this->supportedKeys, this->states));
+	}
+	if (this->buttons["EDITOR_STATE"]->isPressed()) {
+		this->states->push(new EditorState(this->window, this->supportedKeys, this->states));
 	}
 	if (this->buttons["EXIT_BUTTON"]->isPressed()) {
 		this->endState();
