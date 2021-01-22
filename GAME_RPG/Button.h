@@ -1,8 +1,6 @@
 #pragma once
 #include<iostream>
-#include<ctime>
-#include<cstdlib>
-#include<sstream>
+
 
 
 #include"SFML/Graphics.hpp"

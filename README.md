@@ -50,7 +50,7 @@ We calculate the direction the basis of key pressed and decide velocity on the b
 Button class updated with text Color change on the basis of Button state and size of text is also now userdefine.<br/>
 Still Button shape will act as hit area for the button.
 ```diff
--Bug: Text is not getting centrally align with the buttton for buig text size especially vertically.
+-Bug: Text is not getting centrally align with the buttton for big text size especially vertically.
 ```
 
 

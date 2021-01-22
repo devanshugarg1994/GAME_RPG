@@ -22,17 +22,17 @@ void GameState::initKeyBinds()
 
 	// Debugging
 
-		// Debugging purpose
-	for (auto i : this->keyBinds) {
-		std::cout << i.first << " " << i.second << std::endl;
-	}
+	//	// Debugging purpose
+	//for (auto i : this->keyBinds) {
+	//	std::cout << i.first << " " << i.second << std::endl;
+	//}
 
 }
 
 void GameState::initTextures()
 {
 	sf::Texture temp;
-	temp.loadFromFile("Resources/Images/Sprites/Player/Mario.png");
+	temp.loadFromFile("Resources/Images/Sprites/Player/PLAYER_SHEET2.png");
 	this->textures["PLAYER_IDLE"] = temp;
 }
 

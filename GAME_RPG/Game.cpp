@@ -65,10 +65,10 @@ void Game::initKeys()
 		std::cout << "Error! In opening file `supported_keys.init` at the path: `Config/supported_keys.init` " << std::endl;
 	}
 
-	// Debugging purpose
-	for (auto i : this->supportedKeys) {
-		std::cout << i.first << " " << i.second << std::endl;
-	}
+	//// Debugging purpose
+	//for (auto i : this->supportedKeys) {
+	//	std::cout << i.first << " " << i.second << std::endl;
+	//}
 }
 
 void Game::initStates()
