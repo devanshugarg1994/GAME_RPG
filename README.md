@@ -57,4 +57,7 @@ Still Button shape will act as hit area for the button.
 We have created a animationComponent which is used to add multiple animation associated with entity.<br/>
 We can add multiple animation associate  with entity which can be played according to the entity state and it's interaction with the world.<br/><br/> 
 
+[HitBoxComponent](../../tree/99bbc4eacf66fe957a1826c4d36da59a4147cb59)<br/>
+Hitbox is another compoenet added to entity which will be used when this entity is intreacted with other entity in the scene<br/><br/>
+
 
