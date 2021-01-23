@@ -94,7 +94,7 @@ void EditorState::update(const float& dt)
 	this->updateButtons();
 }
 
-void EditorState::renderButtons(sf::RenderTarget* target)
+void EditorState::renderButtons(sf::RenderTarget& target)
 {
 	for (auto& button : this->buttons) {
 		button.second->render(target);
@@ -110,7 +110,7 @@ void EditorState::render(sf::RenderTarget* target)
 		target = this->window;
 	}
 
-	this->renderButtons(target);
+	this->renderButtons(*target);
 
 	// Mouse POsition for Debuging
 	//sf::Text mousePos;
