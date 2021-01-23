@@ -19,8 +19,10 @@ Player::Player(float x, float y,sf::Texture& texture_sheet)
 	// 3.  `initComponenets` use to init  different components on player which may or may depend on the other initializations. 
 	// 
 	this->initVariables();
-	//this->setTexture(texture_sheet); // if the player do not have animation and the spritesheet contain only the character then we have to use it.
+	//this->setTexture(texture_sheet); // if the player do not have multiple animation and the spritesheet contain only the character then we have to use it.
 	this->setPosition(x, y);
+
+	this->createHitBoxComponent(this->sprite, 0.f, 0.f, 64, 64);
 	this->createMovementComponent(200.f, 10.f, 5.f);
 	
 	/** 
@@ -45,6 +47,10 @@ void Player::update(const float& dt)
 	else if(this->movementComponent->getState(MOVING_LEFT)) {
 		this->animationComponent->play("WALK_LEFT", dt);
 
+	}
+
+	if (this->hitboxComponent) {
+		this->hitboxComponent->update(dt);
 	}
 
 }

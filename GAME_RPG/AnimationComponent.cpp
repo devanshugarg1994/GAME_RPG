@@ -25,6 +25,7 @@ void AnimationComponent::addAnimation(const std::string key, float animation_tim
 		width, height);
 }
 
+// If animation get change to another animation then we reset the animation which is running, hence when we return to back that state it will start fresh. 
 void AnimationComponent::play(const std::string key, const float& dt)
 {
 	if (this->lastAnimation != this->animations[key]) {

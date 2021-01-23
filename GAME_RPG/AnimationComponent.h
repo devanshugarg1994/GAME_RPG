@@ -9,6 +9,12 @@
 #include"SFML/Window.hpp"
 #include"SFML/Audio.hpp"
 #include"SFML/Network.hpp"
+
+/** AnimationComponent class contain an inner class `Aniamtion` which will be actually update the frame according to the `animtion_timer`
+	AnimationComponent act as manager which hold all animation refernces as a key value pair relted to entity.
+	This key-value pair is used to play animation and update animation according to entity intreaction with world.
+
+*/
 class AnimationComponent
 {
 private:
@@ -39,7 +45,9 @@ private:
 			this->sprite.setTextureRect(this->startRect);
 		}
 
-		// Functions
+		// Actual function which  is called on every updation loop which is responsible for changing the frame 
+		// of the animation using provided textutre.
+		// which animation frame need change  among the associated animation with entity is decided by  entity or it's subclasses
 		void play(const float& dt) {
 			this->timer += 10.f * dt;
 			if (this->timer >= this->animationTimer) {
