@@ -29,6 +29,8 @@ void AnimationComponent::addAnimation(const std::string key, float animation_tim
 }
 
 // If animation get change to another animation then we reset the animation which is running, hence when we return to back that state it will start fresh. 
+// If any animation which is running and we change the animation then direct conversion will look jittery.
+// Hence if send priority = true then animation will only change when the priority end.
 const bool& AnimationComponent::play(const std::string key, const float& dt, const bool priority)
 {
 	

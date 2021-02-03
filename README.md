@@ -60,4 +60,8 @@ We can add multiple animation associate  with entity which can be played accordi
 [HitBoxComponent](../../tree/99bbc4eacf66fe957a1826c4d36da59a4147cb59)<br/>
 Hitbox is another compoenet added to entity which will be used when this entity is intreacted with other entity in the scene<br/><br/>
 
+[Priority Animation ](../../tree/429019d652b72443c5125912dff154819146ee18)<br/>
+When multiple animation attach to player then if player state change then running animation was getting stop and remain with a frame for some time and next animation start <br/>
+We have fixed both issue. Firstly now animation get change as soon as we change player state.. Secondly In CAse if we want to change animtion if the current animation is run completely then we ca use `priority` paramter in play function of `animationComponent` <br/>
+
 
