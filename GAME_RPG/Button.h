@@ -37,7 +37,7 @@ public:
 		sf::Color idleColor, sf::Color hoverColor, sf::Color pressedColor);
 	~Button();
 	const bool isPressed() const;
-	void update(sf::Vector2f mousePos);
+	void update(const sf::Vector2f& mousePos);
 	void render(sf::RenderTarget &target);
 
 };

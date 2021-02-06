@@ -18,6 +18,9 @@
     <Filter Include="Component">
       <UniqueIdentifier>{60e2cf13-c014-4fee-8595-80e936961ae5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{133cd75f-bcf6-4ecb-9b97-e711bfd77b9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -56,6 +59,9 @@
     <ClCompile Include="HitboxComponent.cpp">
       <Filter>Component</Filter>
     </ClCompile>
+    <ClCompile Include="PauseMenu.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -90,6 +96,9 @@
     </ClInclude>
     <ClInclude Include="HitboxComponent.h">
       <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseMenu.h">
+      <Filter>GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

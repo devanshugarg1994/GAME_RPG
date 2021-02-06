@@ -49,7 +49,7 @@ const bool Button::isPressed() const
 
 
 
-void Button::update(sf::Vector2f mousePos)
+void Button::update(const sf::Vector2f& mousePos)
 {
 	//Hover
 	if (this->shape.getGlobalBounds().contains(mousePos)) {

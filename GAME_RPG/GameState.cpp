@@ -29,6 +29,17 @@ void GameState::initKeyBinds()
 
 }
 
+void GameState::initfonts()
+{
+	if (!this->font.loadFromFile("Fonts/Dosis_Light.ttf")) {
+		throw("ERROR::MAINMENUSATAE::COULD NOTLOAD FONT");
+	}
+}
+void GameState::initPauseMenu()
+{
+	this->pMenu = new PauseMenu(*this->window, this->font);
+	this->pMenu->addButtons("QUIT", 250.f, "Quit");
+}
 void GameState::initTextures()
 {
 	sf::Texture temp;
@@ -45,18 +56,33 @@ GameState::GameState(sf::RenderWindow * window, std::map<std::string, int>* supp
 	: State(window, supportedKeys, states)
 {
 	this->initKeyBinds();
+	this->initfonts();
+	this->initPauseMenu();
 	this->initTextures();
 	this->initPlayers();
 }
 
 GameState::~GameState()
 {
+	delete this->pMenu;
 	delete this->player;
 }
 
 
 
 void GameState::updateInput(const float& dt)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("Close"))) && this->getKeyTime())
+		if (!this->paused) {
+			this->pauseState();
+		}
+		else {
+			this->unpauseState();
+		}
+	}
+
+
+void GameState::updatePlayerInput(const float& dt)
 {
 	
 	// for quiting the state we can press Escape
@@ -70,22 +96,42 @@ void GameState::updateInput(const float& dt)
 		this->player->move(0.f, 1.f, dt);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("MOVE_UP"))))
 		this->player->move(0.f, -1.f, dt);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keyBinds.at("Close"))))
-		this->endState();
-}
 
+}
+void GameState::updatePauseButtons()
+{
+	if (this->pMenu->isButtonPressed("QUIT"))
+	{
+		this->endState();
+	}
+}
+// If pause we do not update the scene.
 void GameState::update(const float& dt)
 {
 	this->updateMousePositions();
+	this->updateKeyTime(dt);
 	this->updateInput(dt);
-	this->player->update(dt);
+
+	if (!this->paused) {
+		this->updatePlayerInput(dt);
+		this->player->update(dt);
+	}
+	else {
+		this->pMenu->update(this->mousePosView);
+		this->updatePauseButtons();
+	}
+
 }
 
+// If paused then we stop updating but render the scene.
 void GameState::render(sf::RenderTarget* target)
 {
 	if (!target) {
 		target = this->window;
 	}
-
 	this->player->render(*target);
+
+	if (this->paused) {
+		this->pMenu->render(*target);
+	}
 }
