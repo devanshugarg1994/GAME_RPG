@@ -7,7 +7,7 @@
 #include"SFML/Network.hpp"
 
 #include<string>
-#include "Button.h"
+#include "Gui.h"
 class PauseMenu
 {
 
@@ -17,14 +17,14 @@ private:
 	sf::RectangleShape background;
 	sf::RectangleShape continer;
 
-	std::map<std::string, Button*> buttons;
+	std::map<std::string, gui::Button*> buttons;
 public: 
 	PauseMenu(sf::RenderWindow& window, sf::Font& font);
 	virtual ~PauseMenu();
 
 	//Functions
 
-	std::map<std::string, Button*>& getButtons();
+	std::map<std::string, gui::Button*>& getButtons();
 	const bool& isButtonPressed(const std::string key);
 	void addButtons(const std::string key, float y , const std::string text);
 	void update(const sf::Vector2f& mousePos);

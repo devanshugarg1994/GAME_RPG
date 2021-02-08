@@ -1,10 +1,12 @@
-#include "MainMenuState.h"
+#include "SettingState.h"
 
- void MainMenuState::initVariables()
+
+void SettingState::initVariables()
 {
+	
 }
 
-void MainMenuState::initBackgrounds()
+void SettingState::initBackgrounds()
 {
 	this->background.setSize(sf::Vector2f(
 		static_cast<float>(this->window->getSize().x),
@@ -17,34 +19,31 @@ void MainMenuState::initBackgrounds()
 	this->background.setTexture(&this->backgroundTexture);
 }
 
-void MainMenuState::initfonts()
+void SettingState::initfonts()
 {
 	if (!this->font.loadFromFile("Fonts/Dosis_Light.ttf")) {
 		throw("ERROR::MAINMENUSATAE::COULD NOTLOAD FONT");
 	}
 }
 
-void MainMenuState::initButtons()
+void SettingState::initButtons()
 {
-	this->buttons["GAME_STATE"] = new gui::Button(300, 480, 150, 50, &this->font, "Game Start", 32,
-		sf::Color(70, 70, 70, 200),sf::Color(250, 250, 250, 255), sf::Color(20, 20, 20, 50), 
-		sf::Color(70, 70, 70, 0),sf::Color(150, 150, 150, 0), sf::Color(20, 20, 20, 0));
-
-	this->buttons["SETTING"] = new gui::Button(300, 620, 150, 50, &this->font, "Setting", 32,
+	this->buttons["APPLY"] = new gui::Button(300, 900, 150, 50, &this->font, "Apply", 32,
 		sf::Color(70, 70, 70, 200), sf::Color(250, 250, 250, 255), sf::Color(20, 20, 20, 50),
 		sf::Color(70, 70, 70, 0), sf::Color(150, 150, 150, 0), sf::Color(20, 20, 20, 0));
 
-	this->buttons["EDITOR_STATE"] = new gui::Button(300, 760, 150, 50, &this->font, "Editor", 32,
+	this->buttons["BACK"] = new gui::Button(600, 900, 150, 50, &this->font, "Back", 32,
 		sf::Color(70, 70, 70, 200), sf::Color(250, 250, 250, 255), sf::Color(20, 20, 20, 50),
 		sf::Color(70, 70, 70, 0), sf::Color(150, 150, 150, 0), sf::Color(20, 20, 20, 0));
-	
-	this->buttons["EXIT_BUTTON"] = new gui::Button(300, 900, 150, 50, &this->font, "Quit", 32,
-		sf::Color(70, 70, 70, 200), sf::Color(250, 250, 250, 255), sf::Color(20, 20, 20, 50), 
-		sf::Color(70, 70, 70, 0), sf::Color(150, 150, 150, 0), sf::Color(20, 20, 20, 0));
-
 }
 
-void MainMenuState::initKeyBinds()
+void SettingState::initGUI()
+{
+	std::string li[] = { "1280*720", "640*360", "2560*1440", "720*1280", "1440*2560" };
+	this->dropDownList["RESOLUTION"] = new gui::DropDownList(450.f, 400.f, 200.f, 50.f, font, li, 5);
+}
+
+void SettingState::initKeyBinds()
 {
 	std::ifstream ifs("Config/gameStates_keyBinds.init");
 
@@ -71,7 +70,7 @@ void MainMenuState::initKeyBinds()
 
 }
 
-MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
+SettingState::SettingState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
 	: State(window, supportedKeys, states)
 {
 	this->initVariables();
@@ -79,10 +78,11 @@ MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int
 	this->initfonts();
 	this->initKeyBinds();
 	this->initButtons();
+	this->initGUI();
 
 }
 
-MainMenuState::~MainMenuState()
+SettingState::~SettingState()
 {
 	// 1) Vector is automatically destroyed when go out of scope but the memory is the vector is pointing in case if vector is a
 	// collection of pointer we have to manually delete the object
@@ -92,52 +92,71 @@ MainMenuState::~MainMenuState()
 		delete it->second;
 	}
 
+	for (auto it = this->dropDownList.begin(); it != this->dropDownList.end(); it++) {
+		delete it->second;
+	}
+
+
 
 }
 
 
 
-void MainMenuState::updateInput(const float& dt)
+void SettingState::updateInput(const float& dt)
 {
 
 }
 
+void SettingState::updateGUI(const float& dt)
+{
+	for (auto& it : this->dropDownList)
+	{
+		it.second->update(this->mousePosView, dt);
+	}
+}
+
 // button in the mainMenuState  handle on every updation cycle
-void MainMenuState::updateButtons()
+void SettingState::updateButtons()
 {
 	for (auto& button : this->buttons) {
 		button.second->update(this->mousePosView);
 	}
-	if (this->buttons["GAME_STATE"]->isPressed()) {
-		this->states->push(new GameState(this->window, this->supportedKeys, this->states));
-	}
-	if (this->buttons["SETTING"]->isPressed()) {
-		this->states->push(new SettingState(this->window, this->supportedKeys, this->states));
-	}
-	if (this->buttons["EDITOR_STATE"]->isPressed()) {
-		this->states->push(new EditorState(this->window, this->supportedKeys, this->states));
-	}
-	if (this->buttons["EXIT_BUTTON"]->isPressed()) {
+
+	if (this->buttons["BACK"]->isPressed()) {
 		this->endState();
 	}
+
+	if (this->buttons["APPLY"]->isPressed()) {
+		//
+	}
+
+
 }
 
-void MainMenuState::update(const float& dt)
+void SettingState::update(const float& dt)
 {
 	this->updateMousePositions();
 	this->updateInput(dt);
 	this->updateButtons();
+	this->updateGUI(dt);
+
 }
 
-void MainMenuState::renderButtons(sf::RenderTarget& target)
+void SettingState::renderGUI(sf::RenderTarget& target)
+{
+	for (auto& list : this->dropDownList) {
+		list.second->render(target);
+	}
+}
+
+void SettingState::renderButtons(sf::RenderTarget& target)
 {
 	for (auto& button : this->buttons) {
 		button.second->render(target);
 	}
-
 }
 
-void MainMenuState::render(sf::RenderTarget* target)
+void SettingState::render(sf::RenderTarget* target)
 {
 	if (!target) {
 		//std::cout << "Warning! Targetted context is not passed" << std::endl;
@@ -147,7 +166,7 @@ void MainMenuState::render(sf::RenderTarget* target)
 
 	target->draw(this->background);
 	this->renderButtons(*target);
-
+	this->renderGUI(*target);
 	// Mouse POsition for Debuging
 	sf::Text mousePos;
 	mousePos.setPosition(this->mousePosView.x, this->mousePosView.y - 50.f);
