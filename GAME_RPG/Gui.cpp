@@ -137,6 +137,11 @@ gui::DropDownList::~DropDownList()
 	}
 }
 
+const unsigned short& gui::DropDownList::getActiveElement() const
+{
+	return this->activeElement->getId();
+}
+
 const bool gui::DropDownList::getKeyTime()
 {
 	if (this->keyTime >= this->keyTimeMax)

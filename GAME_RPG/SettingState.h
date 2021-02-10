@@ -12,6 +12,8 @@ private:
     sf::Font font;
     std::map<std::string, gui::Button*> buttons;
     std::map<std::string, gui::DropDownList*> dropDownList;
+    sf::Text optionsText;
+    std::vector<sf::VideoMode> modes;
 
 
     void initVariables();
@@ -19,6 +21,7 @@ private:
     void initfonts();
     void initButtons();
     void initGUI();
+    void initText();
 protected:
     void initKeyBinds();
 

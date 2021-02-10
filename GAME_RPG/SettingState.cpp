@@ -3,7 +3,7 @@
 
 void SettingState::initVariables()
 {
-	
+	this->modes = sf::VideoMode::getFullscreenModes();
 }
 
 void SettingState::initBackgrounds()
@@ -39,8 +39,23 @@ void SettingState::initButtons()
 
 void SettingState::initGUI()
 {
-	std::string li[] = { "1280*720", "640*360", "2560*1440", "720*1280", "1440*2560" };
-	this->dropDownList["RESOLUTION"] = new gui::DropDownList(450.f, 400.f, 200.f, 50.f, font, li, 5);
+	std::vector<std::string> modes_str;
+	for (auto& i : this->modes) {
+		modes_str.push_back(std::to_string(i.width) + 'x' + std::to_string(i.height));
+	}
+	this->dropDownList["RESOLUTION"] = new gui::DropDownList(450.f, 400.f, 200.f, 50.f, font, modes_str.data(), modes_str.size());
+}
+
+void SettingState::initText()
+{
+	this->optionsText.setFont(this->font);
+	this->optionsText.setPosition(sf::Vector2f(100.f, 100.f));
+
+	this->optionsText.setCharacterSize(30);
+	this->optionsText.setFillColor(sf::Color(255, 255, 255, 200));
+
+
+	this->optionsText.setString("Resolution \nFullScreen \nAntialiasing");
 }
 
 void SettingState::initKeyBinds()
@@ -79,6 +94,7 @@ SettingState::SettingState(sf::RenderWindow* window, std::map<std::string, int>*
 	this->initKeyBinds();
 	this->initButtons();
 	this->initGUI();
+	this->initText();
 
 }
 
@@ -91,13 +107,9 @@ SettingState::~SettingState()
 	for (auto it = this->buttons.begin(); it != this->buttons.end(); it++) {
 		delete it->second;
 	}
-
 	for (auto it = this->dropDownList.begin(); it != this->dropDownList.end(); it++) {
 		delete it->second;
 	}
-
-
-
 }
 
 
@@ -127,7 +139,7 @@ void SettingState::updateButtons()
 	}
 
 	if (this->buttons["APPLY"]->isPressed()) {
-		//
+		this->window->create(this->modes[this->dropDownList["RESOLUTION"]->getActiveElement()], "test", sf::Style::Default);
 	}
 
 
@@ -167,6 +179,7 @@ void SettingState::render(sf::RenderTarget* target)
 	target->draw(this->background);
 	this->renderButtons(*target);
 	this->renderGUI(*target);
+	target->draw(this->optionsText);
 	// Mouse POsition for Debuging
 	sf::Text mousePos;
 	mousePos.setPosition(this->mousePosView.x, this->mousePosView.y - 50.f);
