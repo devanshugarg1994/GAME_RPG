@@ -21,6 +21,12 @@
     <Filter Include="GUI">
       <UniqueIdentifier>{133cd75f-bcf6-4ecb-9b97-e711bfd77b9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TiIle">
+      <UniqueIdentifier>{49174336-01d4-4631-b1ea-ca838dd43b81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PreCompileHeader">
+      <UniqueIdentifier>{d8098e8e-cfdf-4753-ac16-f35f65a959e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,6 +71,15 @@
     <ClCompile Include="Gui.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>TiIle</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>TiIle</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>PreCompileHeader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -105,6 +120,15 @@
     </ClInclude>
     <ClInclude Include="Gui.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>TiIle</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>TiIle</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>PreCompileHeader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

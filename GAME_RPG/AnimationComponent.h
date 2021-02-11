@@ -1,12 +1,5 @@
 #pragma once
-#include<iostream>
-#include<map>
-#include<string>
-#include"SFML/Graphics.hpp"
-#include"SFML/System.hpp"
-#include"SFML/Window.hpp"
-#include"SFML/Audio.hpp"
-#include"SFML/Network.hpp"
+
 
 /** AnimationComponent class contain an inner class `Aniamtion` which will be actually update the frame according to the `animtion_timer`
 	AnimationComponent act as manager which hold all animation refernces as a key value pair relted to entity.

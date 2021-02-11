@@ -1,13 +1,4 @@
 #pragma once
-#include<iostream>
-#include<ctime>
-#include<cstdlib>
-#include<vector>
-#include<stack>
-#include<map>
-#include<fstream>
-#include<sstream>
-
 #include "Entity.h"
 
 class State

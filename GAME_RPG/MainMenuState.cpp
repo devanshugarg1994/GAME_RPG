@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "MainMenuState.h"
 
  void MainMenuState::initVariables()

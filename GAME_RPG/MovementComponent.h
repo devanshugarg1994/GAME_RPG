@@ -1,10 +1,5 @@
 #pragma once
 
-#include"SFML/Graphics.hpp"
-#include"SFML/System.hpp"
-#include"SFML/Window.hpp"
-#include"SFML/Audio.hpp"
-#include"SFML/Network.hpp"
 
 enum movement_states {IDLE = 0, MOVING, MOVING_LEFT, MOVING_RIGHT, MOVING_DOWN, MOVING_UP};
 
