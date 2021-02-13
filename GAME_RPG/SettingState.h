@@ -2,11 +2,13 @@
 
 #include "State.h"
 #include "Gui.h"
+#include "GraphicsSetting.h"
 class SettingState : public State
 {
 public:
 
 private:
+    GraphicsSetting& gSetting;
     sf::RectangleShape background;
     sf::Texture backgroundTexture;
     sf::Font font;
@@ -26,7 +28,7 @@ protected:
     void initKeyBinds();
 
 public:	
-    SettingState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
+    SettingState(sf::RenderWindow* window, GraphicsSetting& gSettings, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
     virtual ~SettingState();
     void updateInput(const float& dt);
     void updateGUI(const float& dt);

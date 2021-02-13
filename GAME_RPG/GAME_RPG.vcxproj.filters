@@ -80,6 +80,9 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>PreCompileHeader</Filter>
     </ClCompile>
+    <ClCompile Include="GraphicsSetting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -129,6 +132,9 @@
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>PreCompileHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsSetting.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,10 +4,13 @@
 #include"GameState.h"
 #include "EditorState.h"
 #include "SettingState.h"
+#include "GraphicsSetting.h"
+
 class MainMenuState :
     public State
 {
 private:
+    GraphicsSetting& gSetting;
     sf::RectangleShape background;
     sf::Texture backgroundTexture;
     sf::Font font;
@@ -20,7 +23,8 @@ protected:
     void initKeyBinds();
 
 public:
-    MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
+    MainMenuState(sf::RenderWindow* window, GraphicsSetting& gSettings,
+            std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
     virtual ~MainMenuState();
     void updateInput(const float& dt);
     void updateButtons();

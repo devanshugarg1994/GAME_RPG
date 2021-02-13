@@ -9,43 +9,26 @@ void Game::initVariables()
 {
 	this->window = NULL;
 	this->dt = 0.f;
-	this->fullScreen = false;
+}
+
+void Game::initGraphicsSettings()
+{
+	this->gSettings.loadFromFile("Config/graphics.init");
 }
 
 // creating game window using Config/window.init file.
 void Game::initWindow()
 {
 	// Default setting
-	std::ifstream ifs("Config/window.init");
-	this->videoModes = sf::VideoMode::getFullscreenModes();
-	
-	std::string title = "NONE";
-	sf::VideoMode window_bounds = sf::VideoMode::getDesktopMode();
-	bool fullscreen = false;
-	unsigned int frameRate = 120;
-	bool vertical_syn_enabled = false;
-	unsigned antialiasing_level = 0;
-
-	if (ifs.is_open()) {
-		std::getline(ifs, title);
-		ifs >> window_bounds.width >> window_bounds.height;
-		ifs >> fullscreen;
-		ifs >> frameRate;
-		ifs >> vertical_syn_enabled;
-		ifs >> antialiasing_level;
-	}
-	ifs.close();
-	this->fullScreen = fullscreen;
-	this->windowSettings.antialiasingLevel = antialiasing_level;
-	if (this->fullScreen) {
-		this->window = new sf::RenderWindow(window_bounds, title, sf::Style::Fullscreen, this->windowSettings);
+	if (this->gSettings.fullScreen) {
+		this->window = new sf::RenderWindow(this->gSettings.resolution, this->gSettings.title, sf::Style::Fullscreen, this->gSettings.contextSettings);
 
 	}
 	else {
-		this->window = new sf::RenderWindow(window_bounds, title,  sf::Style::Titlebar | sf::Style::Close, this->windowSettings);
+		this->window = new sf::RenderWindow(this->gSettings.resolution, this->gSettings.title, sf::Style::Titlebar | sf::Style::Close, this->gSettings.contextSettings);
 	}
-	this->window->setFramerateLimit(frameRate);
-	this->window->setVerticalSyncEnabled(vertical_syn_enabled);
+	this->window->setFramerateLimit(this->gSettings.frameRateLimit);
+	this->window->setVerticalSyncEnabled(this->gSettings.verticalSync);
 }
 
 void Game::initKeys()
@@ -75,12 +58,15 @@ void Game::initKeys()
 
 void Game::initStates()
 {
-	this->states.push(new MainMenuState(this->window, &(this->supportedKeys), &this->states));
+	this->states.push(new MainMenuState(this->window, this->gSettings, &(this->supportedKeys), &this->states));
 }
 
 // Constructor 
 Game::Game()
 {
+	this->initVariables();
+	this->initGraphicsSettings();
+
 	this->initWindow();
 	this->initKeys();
 	this->initStates();

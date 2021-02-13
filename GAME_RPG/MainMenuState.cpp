@@ -73,8 +73,9 @@ void MainMenuState::initKeyBinds()
 
 }
 
-MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
-	: State(window, supportedKeys, states)
+MainMenuState::MainMenuState(sf::RenderWindow* window, GraphicsSetting& gSettings,
+		std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
+	: State(window, supportedKeys, states), gSetting(gSettings)
 {
 	this->initVariables();
 	this->initBackgrounds();
@@ -114,7 +115,7 @@ void MainMenuState::updateButtons()
 		this->states->push(new GameState(this->window, this->supportedKeys, this->states));
 	}
 	if (this->buttons["SETTING"]->isPressed()) {
-		this->states->push(new SettingState(this->window, this->supportedKeys, this->states));
+		this->states->push(new SettingState(this->window, this->gSetting, this->supportedKeys, this->states));
 	}
 	if (this->buttons["EDITOR_STATE"]->isPressed()) {
 		this->states->push(new EditorState(this->window, this->supportedKeys, this->states));

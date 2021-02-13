@@ -6,12 +6,14 @@ class Game
 {
 
 private:
+
+	
 	// Variables
 	sf::RenderWindow* window;
+	GraphicsSetting gSettings;
+
 	sf::Event sfEvent;
-	std::vector<sf::VideoMode> videoModes;
-	sf::ContextSettings windowSettings;
-	bool fullScreen;
+
 	// How much each render and update call take 
 	sf::Clock dtClock;
 	float dt;
@@ -21,6 +23,7 @@ private:
 	std::map<std::string, int> supportedKeys;
 	// Initialization
 	void initVariables();
+	void initGraphicsSettings();
 	void initWindow();
 	void initKeys();
 	void initStates();
