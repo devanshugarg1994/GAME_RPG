@@ -79,4 +79,8 @@ We started to create our own GUI libray. We have ported `Button` class and creat
 element as well which used button class to create a Drop Down List.<br/><br/>
 
 [PreCompiled Header](../../tree/ea4e7c47532ca7cafed892bcea16444097c86da9)<br />
-We added PreCompile Header in the Game.
+We added PreCompile Header in the Game.<br/><br/>
+[Setting State Update](../../tree/6091bbf5d4be0c0bfb65a68e652d00bcf6b0d693)<br />
+We have updated how we can cretae window from a fle and change resolution depend on the value set in `Setting Menu`.
+By default still it take value from file.
+<br/><br/>
