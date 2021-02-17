@@ -10,18 +10,18 @@ private:
     Player *player;
     sf::Font font;
     PauseMenu *pMenu;
-    TileMap map;
+    TileMap* tileMap;
 
 
-protected:
     void initKeyBinds();
     void initfonts();
     void initPauseMenu();
     void initTextures();
     void initPlayers();
+    void initTileMap();
 
 public:
-    GameState(sf::RenderWindow * window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
+    GameState(StateData * state_data);
     virtual ~GameState();
 
     void updateInput(const float& dt);

@@ -8,7 +8,6 @@ class SettingState : public State
 public:
 
 private:
-    GraphicsSetting& gSetting;
     sf::RectangleShape background;
     sf::Texture backgroundTexture;
     sf::Font font;
@@ -28,7 +27,7 @@ protected:
     void initKeyBinds();
 
 public:	
-    SettingState(sf::RenderWindow* window, GraphicsSetting& gSettings, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
+    SettingState(StateData* state_data);
     virtual ~SettingState();
     void updateInput(const float& dt);
     void updateGUI(const float& dt);

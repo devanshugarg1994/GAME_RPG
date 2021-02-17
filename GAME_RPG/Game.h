@@ -6,12 +6,10 @@ class Game
 {
 
 private:
-
-	
 	// Variables
 	sf::RenderWindow* window;
 	GraphicsSetting gSettings;
-
+	StateData stateData;
 	sf::Event sfEvent;
 
 	// How much each render and update call take 
@@ -21,11 +19,13 @@ private:
 	std::vector<sf::Texture> texture;
 	std::stack<State*> states;
 	std::map<std::string, int> supportedKeys;
+	float gridSize;
 	// Initialization
 	void initVariables();
 	void initGraphicsSettings();
 	void initWindow();
 	void initKeys();
+	void initStateData();
 	void initStates();
 
 

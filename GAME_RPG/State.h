@@ -1,11 +1,27 @@
 #pragma once
-#include "Entity.h"
+#include "Player.h"
+#include "GraphicsSetting.h"
+class Player;
+class State;
+class StateData {
+public:
+	StateData() {
+		//
 
+	};
+	float gridSize;
+	sf::RenderWindow* window;
+	std::map<std::string, int>* supportedKeys;
+	std::stack<State*>* states;
+	GraphicsSetting* gSetting;
+
+};
 class State
 {
 private: 
 	
 protected:
+	StateData* stateData;
 	sf::RenderWindow* window;
 	std::map<std::string, int>* supportedKeys;
 	std::stack<State*>* states;
@@ -14,7 +30,7 @@ protected:
 	std::map<std::string, int> keyBinds;
 	float keyTime;
 	float keyTimeMax;
-
+	float gridSize;
 	
 	sf::Vector2i mousePosScreen;
 	sf::Vector2i mousePosWindow;
@@ -25,7 +41,7 @@ protected:
 	// Functions
 	virtual void initKeyBinds() = 0;
 public:
-	State(sf::RenderWindow * window, std::map<std::string, int>* supportedKeys, std::stack<State*>* states);
+	State(StateData* state_data);
 	virtual ~State(); 
 
 	// Accessrors

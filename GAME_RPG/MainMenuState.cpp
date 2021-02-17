@@ -73,9 +73,8 @@ void MainMenuState::initKeyBinds()
 
 }
 
-MainMenuState::MainMenuState(sf::RenderWindow* window, GraphicsSetting& gSettings,
-		std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
-	: State(window, supportedKeys, states), gSetting(gSettings)
+MainMenuState::MainMenuState(StateData* state_data)
+: State(state_data)
 {
 	this->initVariables();
 	this->initBackgrounds();
@@ -112,13 +111,13 @@ void MainMenuState::updateButtons()
 		button.second->update(this->mousePosView);
 	}
 	if (this->buttons["GAME_STATE"]->isPressed()) {
-		this->states->push(new GameState(this->window, this->supportedKeys, this->states));
+		this->states->push(new GameState(this->stateData));
 	}
 	if (this->buttons["SETTING"]->isPressed()) {
-		this->states->push(new SettingState(this->window, this->gSetting, this->supportedKeys, this->states));
+		this->states->push(new SettingState(this->stateData));
 	}
 	if (this->buttons["EDITOR_STATE"]->isPressed()) {
-		this->states->push(new EditorState(this->window, this->supportedKeys, this->states));
+		this->states->push(new EditorState(this->stateData));
 	}
 	if (this->buttons["EXIT_BUTTON"]->isPressed()) {
 		this->endState();

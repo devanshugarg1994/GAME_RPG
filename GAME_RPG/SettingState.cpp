@@ -87,8 +87,8 @@ void SettingState::initKeyBinds()
 
 }
 
-SettingState::SettingState(sf::RenderWindow* window, GraphicsSetting& gSetting, std::map<std::string, int>* supportedKeys, std::stack<State*>* states)
-	: State(window, supportedKeys, states), gSetting(gSetting)
+SettingState::SettingState(StateData* state_data)
+	: State(state_data)
 {
 	this->initVariables();
 	this->initBackgrounds();
@@ -141,9 +141,9 @@ void SettingState::updateButtons()
 	}
 
 	if (this->buttons["APPLY"]->isPressed()) {
-		this->gSetting.resolution = this->modes[this->dropDownList["RESOLUTION"]->getActiveElement()];
+		this->stateData->gSetting->resolution = this->modes[this->dropDownList["RESOLUTION"]->getActiveElement()];
 		 
-		this->window->create(this->modes[this->dropDownList["RESOLUTION"]->getActiveElement()], this->gSetting.title, sf::Style::Default);
+		this->window->create(this->modes[this->dropDownList["RESOLUTION"]->getActiveElement()], this->stateData->gSetting->title, sf::Style::Default);
 	}
 
 
