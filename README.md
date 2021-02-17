@@ -84,3 +84,9 @@ We added PreCompile Header in the Game.<br/><br/>
 We have updated how we can cretae window from a fle and change resolution depend on the value set in `Setting Menu`.
 By default still it take value from file.
 <br/><br/>
+[StateObject created](../../tree/4a7141a6edf85d4468daa5da39ae0c4b9f7bbb4f)<br />
+We have created a private class `StateObject` in `State` class. There are many properties in state which used and set by differnt class which extend `State` class hence we have wrapped them into a an object so we can refer them easily. 
+<br/><br/>
+[TileMap work Started](../../tree/159a4a2d678e8667f355504a2de48388f8eacd0b)<br />
+Start using `Stateobject` and create a basic `selectorShape` GUI in EditorState.
+<br/><br/>
