@@ -2,12 +2,12 @@
 
 #include "TileMap.h"
 
-TileMap::TileMap()
+TileMap::TileMap(float gridSize, unsigned width, unsigned height)
 {
-	this->gridSizeF = 50.f;
+	this->gridSizeF = gridSize;
 	this->gridSizeU = static_cast<float>(this->gridSizeF);
-	this->maxSize.x = 25;
-	this->maxSize.y = 21;
+	this->maxSize.x = width;
+	this->maxSize.y = height;
 	this->layers = 1;
 
 	this->map.resize(this->maxSize.x);
@@ -27,6 +27,14 @@ TileMap::TileMap()
 }
 
 TileMap::~TileMap()
+{
+}
+
+void TileMap::addTile()
+{
+}
+
+void TileMap::removeTile()
 {
 }
 
