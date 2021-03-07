@@ -8,9 +8,11 @@ A RPG game using SFML and C++. In doing so we are building our own Game Engine a
 Game class is the main class which have render, draw and update calls of the game.
 We ceate a single instance of the game class and this class will handle our game functionality
 like update , render and draw call. <br /><br />
+
 [Window config using a file](../../tree/4a0be8d80e745c689247367d74123dd50ec48900)<br />
 We are Reading file `Config/window.init` to get window basic parameters like title, width,
 height which are set on window object when initialized. <br /><br />
+
 [State and GameState](../../tree/2af6e06ac5245df241b0aca5ac0d4a1627f54839)<br />
 State is a abstact class which is inherit by other various component.
 State is used to break our game into smaller and relatable components which make code
@@ -22,33 +24,26 @@ in future we will add more.<br /><br />
 We have add map in Game class which include supported keys in the map from `Config/supported_keys.init`.<br />
 We pass this map as a pointer to state class which are pushed in `States` stack.
 Using this we <i>bind</i> key which are supported with appropriate <b>Event string</b> from there keybinding file at
-`Config\.`
-<br /><br />
+`Config\.`<br /><br />
 
 [Button Class](../../tree/61a2632b6951f0f3f48963eaa9d47453899bf35d)<br />
 Added a buttton class with basic feature<br />
 Button class contain diffrent state and it change when we clicked or hover it.<br />
-Button contain a text parameter which is used to set a text on the button. Text is centrally aligned wr.t button.
-<br /><br />
+Button contain a text parameter which is used to set a text on the button. Text is centrally aligned w.r.t button.<br /><br />
+
 [State end functionality Refactor](../../tree/860d5c120d8759df8fd86a301243c2202020e851)<br />
 Now we have `endState` declare and define at Absract State class.<br />
 It's not declared virtual and should not overrided. Game loop check at every iteration for the quit value of the state
 at the top of stack,
-which can change in inhertited class accordingly using `endSate` of Base class `State`.
-<br /><br />
+which can change in inhertited class accordingly using `endSate` of Base class `State`.<br /><br />
 
 [Basic Player Entity](../../tree/a28c5fe8d056412394cb2b026451edbc3db95e49)<br />
-Start working on differnt Component. We have created basic `Player` class which extends `Entity`.
-<br />
-<br />
+Start working on differnt Component. We have created basic `Player` class which extends `Entity`.<br /><br />
+
 [MovementComponent](../../tree/dc3042a029180d27b756c070008ab53e555ce47d)<br />
 Movement Component is like tarit which is added when required by the Entity.<br />
-Right now it is tightly coupled with sprite which is used with entity and use `move` function of <b>SFML::Sprite</b> to
-move.</br>
-We calculate the direction the basis of key pressed and decide velocity on the basis of maxvelocity permitted and use
-dragFactor as well to have a check on velocity.
-<br />
-<br />
+Right now it is tightly coupled with sprite which is used with entity and use `move` function of <b>SFML::Sprite</b> to move.</br>
+We calculate the direction the basis of key pressed and decide velocity on the basis of maxvelocity permitted and use dragFactor as well to have a check on velocity.<br /><br />
 
 [Button Class Update](../../tree/1fdc24edd74a3d03b2aaa2242ec45774d2aa1fc5)<br />
 Button class updated with text Color change on the basis of Button state and size of text is also now userdefine.<br />
@@ -63,30 +58,29 @@ We can add multiple animation associate with entity which can be played accordin
 interaction with the world.<br /><br />
 
 [HitBoxComponent](../../tree/99bbc4eacf66fe957a1826c4d36da59a4147cb59)<br />
-Hitbox is another compoenet added to entity which will be used when this entity is intreacted with other entity in the
-scene<br /><br />
+Hitbox is another compoenet added to entity which will be used when this entity is intreacted with other entity in the scene<br /><br />
 
 [Priority Animation ](../../tree/429019d652b72443c5125912dff154819146ee18)<br />
-When multiple animation attach to player then if player state change then running animation was getting stop and remain
-with a frame for some time and next animation start <br />
-We have fixed both issue. Firstly now animation get change as soon as we change player state.. Secondly In CAse if we
-want to change animtion if the current animation is run completely then we ca use `priority` paramter in play function
-of `animationComponent` <br/><br/>
+When multiple animation attach to player then if player state change then running animation was getting stop and remain with a frame for some time and next animation start <br />
+We have fixed both issue. Firstly now animation get change as soon as we change player state.. Secondly In Case if we want to change animtion if the current animation is run completely then we ca use `priority` paramter in play function of `animationComponent` <br /><br />
+
 [Pause Menu](../../tree/9fb25b4d67fe9f01cd54496b38175464b4e95a4b)<br />
-We have added the functionality of pause while we are in `GameState` i.e.. when we are playing the game.
+We have added the functionality of pause while we are in `GameState` i.e.. when we are playing the game.<br/><br/>
 [DropDownList GUI](../../tree/30e229ec51d19a584682740a72b05c9c7a9e40d8)<br />
-We started to create our own GUI libray. We have ported `Button` class and created `DropDownList`GUI 
-element as well which used button class to create a Drop Down List.<br/><br/>
+We started to create our own GUI libray. We have ported `Button` class and created `DropDownList`GUI
+element as well which used button class to create a Drop Down List.<br /><br />
 
 [PreCompiled Header](../../tree/ea4e7c47532ca7cafed892bcea16444097c86da9)<br />
-We added PreCompile Header in the Game.<br/><br/>
+We added PreCompile Header in the Game.<br /><br />
+
 [Setting State Update](../../tree/6091bbf5d4be0c0bfb65a68e652d00bcf6b0d693)<br />
-We have updated how we can cretae window from a fle and change resolution depend on the value set in `Setting Menu`.
-By default still it take value from file.
-<br/><br/>
+We have updated how we can cretae window from a fle and change resolution depend on the value set in `Setting Menu`. By default still it take value from file.
+<br /><br />
+
 [StateObject created](../../tree/4a7141a6edf85d4468daa5da39ae0c4b9f7bbb4f)<br />
-We have created a private class `StateObject` in `State` class. There are many properties in state which used and set by differnt class which extend `State` class hence we have wrapped them into a an object so we can refer them easily. 
-<br/><br/>
+We have created a private class `StateObject` in `State` class. There are many properties in state which used and set by differnt class which extend `State` class hence we have wrapped them into a an object so we can refer them easily.
+<br /><br />
+
 [TileMap work Started](../../tree/159a4a2d678e8667f355504a2de48388f8eacd0b)<br />
 Start using `Stateobject` and create a basic `selectorShape` GUI in EditorState.
-<br/><br/>
+<br /><br />
